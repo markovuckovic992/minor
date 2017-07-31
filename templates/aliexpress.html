@@ -7,8 +7,16 @@
 	<body>
 		<form action="/search_aliexpress/" method="POST">
 			{% csrf_token %}
-			<input type="text" name="url">
-			<input type="submit" value="Submit">
+			<input type="text" name="url" placeholder="Url:"> <br />
+			<input type="text" name="price" placeholder="Your price:"> <br />
+			Lends itself to return customers? <input type="checkbox" name="r"> <br />
+			Lends itself to related products? <input type="checkbox" name="r_p"> <br />
+			Lends itself to bundling? <input type="checkbox" name="b"> <br />
+			Difficult to buy locally? Novelty? <input type="checkbox" name="d_t_b"> <br />
+			Seasonal business? <input type="checkbox" name="s_b"> <br />
+			Google Trends Rising or Idling? <input type="checkbox" name="g"> <br />
+			Small in size? <input type="checkbox" name="s"> <br />
+			<input type="submit" value="Submit"> <br />
 		</form> 
 	</body>
 	<script type="text/javascript">
