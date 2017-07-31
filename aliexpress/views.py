@@ -9,12 +9,13 @@ def search(request):
 	# POST DATA
 	url = request.POST['url']
 	price = request.POST['price']
-	r = request.POST['r']
-	r_p = request.POST['r_p']
-	b = request.POST['b']
-	d_t_b = request.POST['d_t_b']
-	s_b = request.POST['s_b']
-	g = request.POST['g']
+	keys = request.POST.keys()
+	r = True if 'r' in keys else False
+	r_p = True if 'r_p' in keys else False
+	b = True if 'b' in keys else False
+	d_t_b = True if 'd_t_b' in keys else False
+	s_b = True if 's_b' in keys else False
+	g = True if 'g' in keys else False
 	# END POST DATA
 	url_array = url.split('.html')
 	url = url_array[0]
