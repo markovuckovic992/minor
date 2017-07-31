@@ -5,7 +5,6 @@ import re
 import json
 
 class AliCrawler:
-
     def __init__(self):
         self.alidomain = 'aliexpress.com'
 
