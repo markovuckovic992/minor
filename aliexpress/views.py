@@ -1,6 +1,10 @@
 from django.shortcuts import render, HttpResponse
 
 from alicrawler import AliCrawler
+from fetch import main
+
+import random
+
 
 def home(request):
 	return render(request, 'aliexpress.html', {})
@@ -17,6 +21,8 @@ def search(request):
 	s_b = True if 's_b' in keys else False
 	g = True if 'g' in keys else False
 	# END POST DATA
+	proxies = main()
+
 	url_array = url.split('.html')
 	url = url_array[0]
 	try:
@@ -28,7 +34,10 @@ def search(request):
 	i = 0
 	while just_do_it:
 		try:
-			ali = AliCrawler()
+			id_ = random.randint(0, len(proxies))
+			ip_ = proxies[id_]
+			print ip_
+			ali = AliCrawler(ip_)
 			resp = ali.getItemById(id, store_stats=True, count=1)
 			just_do_it = False
 		except:

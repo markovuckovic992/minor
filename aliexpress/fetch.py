@@ -102,9 +102,9 @@ def run():
         if 'socks5' == proxy['type']:
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
     
-    rnd = random.randint(0, len(response_data))
+    # rnd = random.randint(0, len(response_data))
 
-    return response_data[rnd]
+    return response_data
     # queue = Queue.Queue()
     # for proxy in proxies:
     #     queue.put(proxy)
