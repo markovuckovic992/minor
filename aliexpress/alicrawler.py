@@ -7,13 +7,10 @@ import json
 class AliCrawler:
     def __init__(self):
         self.alidomain = 'aliexpress.com'
-        self.proxy = {
-            "http": 'http://144.217.247.151:3128'
-        }
 
     def getItemById(self, item_id, store_stats=False, count=1):
         url = 'http://www.%s/item/-/%d.html' % (self.alidomain, item_id)
-        req = requests.get(url, proxies=self.proxy)
+        req = requests.get(url)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
 
@@ -79,7 +76,7 @@ class AliCrawler:
             '&currencyCode=USD&productid=%d' % (self.alidomain, count, item_id))
         ePacket = False
         try:
-            req = requests.get(url, proxies=self.proxy)
+            req = requests.get(url)
             data = json.loads(req.text[5:-1])
             prices = []
             for shipment in data['freight']:
@@ -97,7 +94,7 @@ class AliCrawler:
             '?callback=json&ownerAdminSeq=%d' % (self.alidomain, admin_id))
 
         try:
-            req = requests.get(url, proxies=self.proxy)
+            req = requests.get(url)
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -115,7 +112,7 @@ class AliCrawler:
     def getSellerPositiveReviews(self, admin_id):
         url = ('https://feedback.%s/display/evaluationDetail.htm'
             '?callback=json&ownerMemberId=%d' % (self.alidomain, admin_id))
-        req = requests.get(url, proxies=self.proxy)
+        req = requests.get(url)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text
@@ -124,6 +121,7 @@ class AliCrawler:
 
 if __name__ == "__main__":
     ali = AliCrawler()
-    ids = [32787289774]
-    for id in ids:
-        print ali.getItemById(id, store_stats=True, count=1)
+    ids = "1527079450,1600106660,1439525019,1439525019,1743878872,1435779436,1461847096"
+    for id in ids.split(","):
+        print "===== %d" % int(id)
+        print ali.getItemById(int(id))
