@@ -20,11 +20,11 @@ def search(request):
 	url_array = url.split('.html')
 	url = url_array[0]
 	id = int(url.split('/')[-1])
-	ali = AliCrawler()
 	just_do_it = True
 	i = 0
 	while just_do_it:
 		try:
+			ali = AliCrawler()
 			resp = ali.getItemById(id, store_stats=True, count=1)
 			just_do_it = False
 		except:

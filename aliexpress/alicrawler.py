@@ -3,17 +3,25 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import json
+from fetch import main
 
 class AliCrawler:
     def __init__(self):
+        ip_ = main()
+        print ip_
         self.alidomain = 'aliexpress.com'
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
         }
+        # ip_ = 'socks5://201.53.19.30:42361'
+        self.proxies = {
+            'http': ip_,
+            'https': ip_
+        }
 
     def getItemById(self, item_id, store_stats=False, count=1):
         url = 'http://www.%s/item/-/%d.html' % (self.alidomain, item_id)
-        req = requests.get(url, headers=self.headers)
+        req = requests.get(url, headers=self.headers, proxies=self.proxies)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
 
