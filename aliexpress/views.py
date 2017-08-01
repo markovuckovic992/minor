@@ -19,7 +19,11 @@ def search(request):
 	# END POST DATA
 	url_array = url.split('.html')
 	url = url_array[0]
-	id = int(url.split('/')[-1])
+	try:
+		id = int(url.split('/')[-1])
+	except:
+		data = url.split('/')[-1]
+		id = int(data.split('_')[-1])
 	just_do_it = True
 	i = 0
 	while just_do_it:

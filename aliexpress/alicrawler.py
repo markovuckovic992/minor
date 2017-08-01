@@ -8,7 +8,6 @@ from fetch import main
 class AliCrawler:
     def __init__(self):
         ip_ = main()
-        print ip_
         self.alidomain = 'aliexpress.com'
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
@@ -18,6 +17,14 @@ class AliCrawler:
             'http': ip_,
             'https': ip_
         }
+
+    def change(self):
+        ip_ = main()
+        self.proxies = {
+            'http': ip_,
+            'https': ip_
+        }
+
 
     def getItemById(self, item_id, store_stats=False, count=1):
         url = 'http://www.%s/item/-/%d.html' % (self.alidomain, item_id)
@@ -87,7 +94,7 @@ class AliCrawler:
             '&currencyCode=USD&productid=%d' % (self.alidomain, count, item_id))
         ePacket = False
         try:
-            req = requests.get(url, headers=self.headers)
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
             data = json.loads(req.text[5:-1])
             prices = []
             for shipment in data['freight']:
@@ -96,7 +103,18 @@ class AliCrawler:
                 prices.append(float(shipment['price']))
             shipping = min(prices)
         except:
-            shipping = None
+            self.change()
+            try:
+                req = requests.get(url, headers=self.headers, proxies=self.proxies)
+                data = json.loads(req.text[5:-1])
+                prices = []
+                for shipment in data['freight']:
+                    if shipment['companyDisplayName'] == 'ePacket':
+                        ePacket = True
+                    prices.append(float(shipment['price']))
+                shipping = min(prices)
+            except:
+                shipping = None
 
         return shipping == 0, ePacket
 
@@ -105,7 +123,7 @@ class AliCrawler:
             '?callback=json&ownerAdminSeq=%d' % (self.alidomain, admin_id))
 
         try:
-            req = requests.get(url, headers=self.headers)
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -116,14 +134,32 @@ class AliCrawler:
             data = data / i
             data = float("{0:.2f}".format(data))
         except:
-            data = None
+            self.change()
+            try:
+                req = requests.get(url, headers=self.headers, proxies=self.proxies)
+                useful_data = req.text[8:-4].strip()
+                tmp = json.loads(useful_data)
+                data = 0
+                i = 0
+                for key in tmp.keys():
+                    data += float(tmp[key]['score'])
+                    i += 1
+                data = data / i
+                data = float("{0:.2f}".format(data))
+            except:
+                data = None
 
         return data
 
     def getSellerPositiveReviews(self, admin_id):
         url = ('https://feedback.%s/display/evaluationDetail.htm'
             '?callback=json&ownerMemberId=%d' % (self.alidomain, admin_id))
-        req = requests.get(url, headers=self.headers)
+        try:
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
+        except:
+            self.change()
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
+
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text
