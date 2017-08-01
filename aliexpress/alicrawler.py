@@ -124,7 +124,6 @@ class AliCrawler:
 
 if __name__ == "__main__":
     ali = AliCrawler()
-    ids = "1527079450,1600106660,1439525019,1439525019,1743878872,1435779436,1461847096"
-    for id in ids.split(","):
-        print "===== %d" % int(id)
-        print ali.getItemById(int(id))
+    ids = [32787289774]
+    for id in ids:
+        print ali.getItemById(id, store_stats=True, count=1)
