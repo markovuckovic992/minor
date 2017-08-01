@@ -86,7 +86,7 @@ class AliCrawler:
             '&currencyCode=USD&productid=%d' % (self.alidomain, count, item_id))
         ePacket = False
         try:
-            req = requests.get(url, headers=self.headers, proxies=self.proxies)
+            req = requests.get(url, headers=self.headers)
             data = json.loads(req.text[5:-1])
             prices = []
             for shipment in data['freight']:
@@ -104,7 +104,7 @@ class AliCrawler:
             '?callback=json&ownerAdminSeq=%d' % (self.alidomain, admin_id))
 
         try:
-            req = requests.get(url, headers=self.headers, proxies=self.proxies)
+            req = requests.get(url, headers=self.headers)
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -122,7 +122,7 @@ class AliCrawler:
     def getSellerPositiveReviews(self, admin_id):
         url = ('https://feedback.%s/display/evaluationDetail.htm'
             '?callback=json&ownerMemberId=%d' % (self.alidomain, admin_id))
-        req = requests.get(url, headers=self.headers, proxies=self.proxies)
+        req = requests.get(url, headers=self.headers)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text
