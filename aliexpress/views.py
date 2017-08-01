@@ -24,7 +24,7 @@ def search(request):
 	just_do_it = True
 	i = 0
 	while just_do_it:
-		try:			
+		try:
 			resp = ali.getItemById(id, store_stats=True, count=1)
 			just_do_it = False
 		except:

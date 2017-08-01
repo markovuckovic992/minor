@@ -7,10 +7,13 @@ import json
 class AliCrawler:
     def __init__(self):
         self.alidomain = 'aliexpress.com'
+        self.proxy = {
+            "http": 'http://144.217.247.151:3128'
+        }
 
     def getItemById(self, item_id, store_stats=False, count=1):
         url = 'http://www.%s/item/-/%d.html' % (self.alidomain, item_id)
-        req = requests.get(url)
+        req = requests.get(url, proxies=self.proxy)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
 
@@ -18,14 +21,14 @@ class AliCrawler:
         try:
             data['original_price'] = float(bs4.select('span[itemprop=highPrice]')[0].string.split(' ')[0])
         except:
-            data['original_price'] = float(bs4.select('span[itemprop=price]')[0].string.split(' ')[0])            
-     
+            data['original_price'] = float(bs4.select('span[itemprop=price]')[0].string.split(' ')[0])
+
         try:
             data['rating'] = float(bs4.select('span[itemprop=ratingValue]')[0].string)
         except:
             data['rating'] = 0.0
 
- 
+
         try:
             content = bs4.select('span.shop-time')[0].em.text
             content = content.replace('year', '').replace('(s)', '')
@@ -76,7 +79,7 @@ class AliCrawler:
             '&currencyCode=USD&productid=%d' % (self.alidomain, count, item_id))
         ePacket = False
         try:
-            req = requests.get(url)
+            req = requests.get(url, proxies=self.proxy)
             data = json.loads(req.text[5:-1])
             prices = []
             for shipment in data['freight']:
@@ -94,7 +97,7 @@ class AliCrawler:
             '?callback=json&ownerAdminSeq=%d' % (self.alidomain, admin_id))
 
         try:
-            req = requests.get(url)
+            req = requests.get(url, proxies=self.proxy)
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -105,14 +108,14 @@ class AliCrawler:
             data = data / i
             data = float("{0:.2f}".format(data))
         except:
-            data = None 
+            data = None
 
         return data
 
-    def getSellerPositiveReviews(self, admin_id):        
+    def getSellerPositiveReviews(self, admin_id):
         url = ('https://feedback.%s/display/evaluationDetail.htm'
             '?callback=json&ownerMemberId=%d' % (self.alidomain, admin_id))
-        req = requests.get(url)
+        req = requests.get(url, proxies=self.proxy)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text
