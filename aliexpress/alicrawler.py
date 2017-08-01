@@ -24,10 +24,22 @@ class AliCrawler:
 
         data = {}
         try:
-            data['original_price'] = float(bs4.select('span[itemprop=highPrice]')[0].string.split(' ')[0])
+            price  = bs4.select('span[itemprop=highPrice]')[0].string.split(' ')[0]
+            if '.' not in price:
+                price = price.replace(',', '.')
+            else:
+                price = price.replace(',', '')
+            data['original_price'] = float(price)
         except:
-            data['original_price'] = float(bs4.select('span[itemprop=price]')[0].string.split(' ')[0])
+            import traceback
+            print traceback.format_exc()
 
+            price  = bs4.select('span[itemprop=price]')[0].string.split(' ')[0]
+            if '.' not in price:
+                price.replace(',', '.')
+            else:
+                price.replace(',', '')               
+            data['original_price'] = float(price)
         try:
             data['rating'] = float(bs4.select('span[itemprop=ratingValue]')[0].string)
         except:
@@ -84,7 +96,7 @@ class AliCrawler:
             '&currencyCode=USD&productid=%d' % (self.alidomain, count, item_id))
         ePacket = False
         try:
-            req = requests.get(url, headers=self.headers)
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
             data = json.loads(req.text[5:-1])
             prices = []
             for shipment in data['freight']:
@@ -102,7 +114,7 @@ class AliCrawler:
             '?callback=json&ownerAdminSeq=%d' % (self.alidomain, admin_id))
 
         try:
-            req = requests.get(url, headers=self.headers)
+            req = requests.get(url, headers=self.headers, proxies=self.proxies)
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -120,7 +132,7 @@ class AliCrawler:
     def getSellerPositiveReviews(self, admin_id):
         url = ('https://feedback.%s/display/evaluationDetail.htm'
             '?callback=json&ownerMemberId=%d' % (self.alidomain, admin_id))
-        req = requests.get(url, headers=self.headers)
+        req = requests.get(url, headers=self.headers, proxies=self.proxies)
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text

@@ -41,6 +41,8 @@ def search(request):
 			resp = ali.getItemById(id, store_stats=True, count=1)
 			just_do_it = False
 		except:
+			import traceback
+			print traceback.format_exc()
 			i += 1
 		if i == 5:
 			just_do_it = False
