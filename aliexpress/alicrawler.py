@@ -38,7 +38,7 @@ class AliCrawler:
             if '.' not in price:
                 price.replace(',', '.')
             else:
-                price.replace(',', '')               
+                price.replace(',', '')
             data['original_price'] = float(price)
         try:
             data['rating'] = float(bs4.select('span[itemprop=ratingValue]')[0].string)
