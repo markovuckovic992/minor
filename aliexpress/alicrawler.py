@@ -24,22 +24,22 @@ class AliCrawler:
 
         data = {}
         try:
-            price  = bs4.select('span[itemprop=highPrice]')[0].string.split(' ')[0]
+            price = bs4.select('span[itemprop=highPrice]')[0].string.split(' ')[0]
             if '.' not in price:
                 price = price.replace(',', '.')
             else:
                 price = price.replace(',', '')
-            data['original_price'] = float(price)
+            data['original_price'] = float(price.strip())
         except:
             import traceback
             print traceback.format_exc()
 
-            price  = bs4.select('span[itemprop=price]')[0].string.split(' ')[0]
+            price = bs4.select('span[itemprop=price]')[0].string.split(' ')[0]
             if '.' not in price:
                 price.replace(',', '.')
             else:
                 price.replace(',', '')
-            data['original_price'] = float(price)
+            data['original_price'] = float(price.strip())
         try:
             data['rating'] = float(bs4.select('span[itemprop=ratingValue]')[0].string)
         except:
