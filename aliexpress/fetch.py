@@ -99,7 +99,8 @@ def run():
 
     response_data = []
     for proxy in proxies:
-        if 'socks5' == proxy['type']:
+        # if 'socks5' == proxy['type']:
+            # print proxy
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
     
     # rnd = random.randint(0, len(response_data))
@@ -144,3 +145,6 @@ def run():
 def main():
     IP = run()
     return IP
+
+if __name__ == "__main__":
+    main()
