@@ -25,7 +25,7 @@ FALLBACK_METHOD = False
 IFCONFIG_CANDIDATES = ("https://ifconfig.co/ip", "https://api.ipify.org/?format=text", "https://ifconfig.io/ip", "https://ifconfig.minidump.info/ip", "https://myexternalip.com/raw", "https://wtfismyip.com/text")
 IFCONFIG_URL = None
 MAX_HELP_OPTION_LENGTH = 18
-PROXY_LIST_URL = "https://hidester.com/proxydata/php/data.php?mykey=csv&gproxy=3"
+PROXY_LIST_URL = "https://hidester.com/proxydata/php/data.php?mykey=csv&gproxy=2"
 ROTATION_CHARS = ('/', '-', '\\', '|')
 TIMEOUT = 10
 THREADS = 10
@@ -106,9 +106,9 @@ def run():
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
 
     # rnd = random.randint(0, len(response_data))
-    file = open('/home/aliexpress/master/json.json', 'w')
-    file.write(json.dumps(response_data))
-    file.close()
+    # file = open('/home/aliexpress/master/json.json', 'w')
+    # file.write(json.dumps(response_data))
+    # file.close()
     return response_data
     # queue = Queue.Queue()
     # for proxy in proxies:
