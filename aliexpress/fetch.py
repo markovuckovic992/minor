@@ -19,8 +19,8 @@ BANNER = """
 |f||e||t||c||h||-||s||o||m||e||-||p||r||o||x||i||e||s| <- v%s
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+""".strip("\r\n") % VERSION
 
-# ANONIMITY_LEVELS = {"elite": "high", "anonymous": "medium", "transparent": "low"}
-ANONIMITY_LEVELS = {"transparent": "low"}
+ANONIMITY_LEVELS = {"elite": "high", "anonymous": "medium"}
+# ANONIMITY_LEVELS = {"transparent": "low"}
 FALLBACK_METHOD = False
 IFCONFIG_CANDIDATES = ("https://ifconfig.co/ip", "https://api.ipify.org/?format=text", "https://ifconfig.io/ip", "https://ifconfig.minidump.info/ip", "https://myexternalip.com/raw", "https://wtfismyip.com/text")
 IFCONFIG_URL = None
@@ -106,9 +106,9 @@ def run():
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
 
     # rnd = random.randint(0, len(response_data))
-    # file = open('/home/aliexpress/master/json.json', 'w')
-    # file.write(json.dumps(response_data))
-    # file.close()
+    file = open('/home/aliexpress/master/json.json', 'w')
+    file.write(json.dumps(response_data))
+    file.close()
     return response_data
     # queue = Queue.Queue()
     # for proxy in proxies:

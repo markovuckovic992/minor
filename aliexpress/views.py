@@ -25,6 +25,7 @@ def search(request):
     # END POST DATA
     file = open('json.json', 'r')
     proxies = list(json.loads(file.read()))
+    file.close()
     # proxies = main()
 
     url_array = url.split('.html')
@@ -58,5 +59,8 @@ def search(request):
     if i == 7:
         return render(request, 'aliexpress.html', {'error': 'System failed to find data for this product. Try again after a while.'})
     else:
+        file = open('succeded.txt', 'a')
+        file.write(ip_ + '\n')
+        file.close()
         return render(request, 'aliexpress_response.html', {'response': resp})
 
