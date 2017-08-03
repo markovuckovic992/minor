@@ -100,7 +100,7 @@ def run():
     response_data = []
     for proxy in proxies:
         # if 'socks5' == proxy['type']:
-        if proxy['ping'] <= 100:
+        if 100 <= proxy['ping'] <= 200:
             # print proxy
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
 
