@@ -99,8 +99,8 @@ def run():
 
     response_data = []
     for proxy in proxies:
-        # if proxy['type'] not in ['socks5', 'https'] and int(proxy['ping']) <= 200:
-        if int(proxy['ping']) <= 200:
+        # if int(proxy['ping']) <= 200:
+        if proxy['type'] in ['socks5', 'https']:
             # print proxy
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
 
