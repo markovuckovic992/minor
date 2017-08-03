@@ -100,10 +100,10 @@ def run():
     response_data = []
     for proxy in proxies:
         # if 'socks5' == proxy['type']:
-        if proxy['ping'] <= 200:
+        if proxy['ping'] <= 100:
             # print proxy
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
-    
+
     # rnd = random.randint(0, len(response_data))
 
     return response_data
