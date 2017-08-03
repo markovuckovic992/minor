@@ -38,16 +38,16 @@ def search(request):
     i = 0
     while just_do_it:
         try:
-            find_normal = True
-            while find_normal:
-                try:
-                    id_ = random.randint(0, len(proxies))
-                    ip_ = proxies[id_]
-                    requests.get('http://google.com', proxies={'http': ip_})
-                    find_normal = False
-                    print ip_
-                except:
-                    pass
+            # find_normal = True
+            # while find_normal:
+            #     try:
+            id_ = random.randint(0, len(proxies))
+            ip_ = proxies[id_]
+            # requests.get('http://google.com', proxies={'http': ip_})
+            # find_normal = False
+            print ip_
+                # except:
+                #     pass
             ali = AliCrawler(ip_)
             resp = ali.getItemById(id, store_stats=True, count=1)
             just_do_it = False

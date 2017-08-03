@@ -19,12 +19,13 @@ BANNER = """
 |f||e||t||c||h||-||s||o||m||e||-||p||r||o||x||i||e||s| <- v%s
 +-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-++-+""".strip("\r\n") % VERSION
 
-ANONIMITY_LEVELS = {"elite": "high"}
+# ANONIMITY_LEVELS = {"elite": "high", "anonymous": "medium", "transparent": "low"}
+ANONIMITY_LEVELS = {"transparent": "low"}
 FALLBACK_METHOD = False
 IFCONFIG_CANDIDATES = ("https://ifconfig.co/ip", "https://api.ipify.org/?format=text", "https://ifconfig.io/ip", "https://ifconfig.minidump.info/ip", "https://myexternalip.com/raw", "https://wtfismyip.com/text")
 IFCONFIG_URL = None
 MAX_HELP_OPTION_LENGTH = 18
-PROXY_LIST_URL = "https://hidester.com/proxydata/php/data.php?mykey=csv&gproxy=2"
+PROXY_LIST_URL = "https://hidester.com/proxydata/php/data.php?mykey=csv&gproxy=3"
 ROTATION_CHARS = ('/', '-', '\\', '|')
 TIMEOUT = 10
 THREADS = 10
