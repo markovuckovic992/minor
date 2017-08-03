@@ -53,9 +53,9 @@ def search(request):
             just_do_it = False
         except:
             i += 1
-        if i == 5:
+        if i == 10:
             just_do_it = False
-    if i == 5:
+    if i == 10:
         return render(request, 'aliexpress.html', {'error': 'System failed to find data for this product. Try again after a while.'})
     else:
         return render(request, 'aliexpress_response.html', {'response': resp})
