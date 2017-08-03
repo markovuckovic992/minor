@@ -105,7 +105,7 @@ def run():
             response_data.append(proxy['type'] + '://' + proxy['IP'] + ':' + unicode(proxy['PORT']))
 
     # rnd = random.randint(0, len(response_data))
-    file = open('json.json', 'w')
+    file = open('~/master/json.json', 'w')
     file.write(json.dumps(response_data))
     file.close()
     return response_data
