@@ -9,7 +9,11 @@ import json
 
 
 def home(request):
-    return render(request, 'aliexpress.html', {})
+    #resp = request.__dict__['HTTP_REFERER']
+    resp = {}
+    #for data in request.__dict__:
+    # 	resp.update({data: request.__dict__[data]})
+    return render(request, 'aliexpress.html', {'request': resp})
 
 def search(request):
     # POST DATA
