@@ -10,7 +10,7 @@ import json
 
 def home(request):
     #resp = request.__dict__['HTTP_REFERER']
-    # resp = {}
+    resp = {}
     # for data in request.META.keys():
     # 	resp.update({data: request.META[data]})
     return render(request, 'aliexpress.html', {'request': resp})
