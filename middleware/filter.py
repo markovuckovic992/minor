@@ -1,6 +1,7 @@
 from django.conf import settings
 from django import http
 from aliexpress.views import get_client_ip
+from administration.models import Users
 
 class AllowIpMiddleware(object):
     def __init__(self, get_response):

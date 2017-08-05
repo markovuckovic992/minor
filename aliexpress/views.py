@@ -19,9 +19,10 @@ def get_client_ip(request):
 	return ip
 
 def home(request):
-	time = datetime.now() + timedelta(minutes=1)
-	Users(ip=get_client_ip(request), datetime=time).save()
-	return render(request, 'aliexpress.html', {})
+    time = datetime.now() + timedelta(minutes=1)
+    if not Users.objects.filter(ip=get_client_ip(request)).exists():
+        Users(ip=get_client_ip(request), datetime=time).save()
+    return render(request, 'aliexpress.html', {})
 
 def search(request):
     # POST DATA
