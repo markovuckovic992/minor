@@ -9,7 +9,7 @@ class AllowIpMiddleware(object):
     def __call__(self, request):
 		try:
 			REFERER = request.META['HTTP_REFERER']
-			if 'http://www.digitalcashacademy.com' in REFERER or 'http://138.201.226.93/search_aliexpress' in REFERER:
+			if 'http://www.digitalcashacademy.com' in REFERER or 'http://138.201.226.93' in REFERER:
 				response = self.get_response(request)
 				return response
 			return http.HttpResponseForbidden('<h1>Forbidden</h1>')
