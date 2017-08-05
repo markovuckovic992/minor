@@ -13,4 +13,6 @@ class AllowIpMiddleware(object):
 				return response
 			return http.HttpResponseForbidden('<h1>Forbidden</h1>')
 		except:
-			return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+			response = self.get_response(request)
+			return response
+			# return http.HttpResponseForbidden('<h1>Forbidden</h1>')
