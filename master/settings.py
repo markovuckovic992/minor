@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e!4$yjrob2-rmefkhjbmfy)vg9twu2p@z6hsd+&#$mfe+krlz%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'middleware.filter.AllowIpMiddleware',
 ]
 
 ROOT_URLCONF = 'master.urls'
@@ -132,3 +133,8 @@ STATICFILES_DIRS = [
 # Static files (CSS, JavaScript, Images)
 LOGIN_URL = '/home_login/'
 STATIC_URL = '/static/'
+
+ALLOWED_IPS = [
+    '54.194.70.47'
+]
+
