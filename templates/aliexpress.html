@@ -20,7 +20,7 @@
             }
         </script>
 	</head>
-	<body>{{ request }}
+	<body>
 		<form action="/search_aliexpress/" method="POST">
 			{% csrf_token %}
 			<input type="text" name="url" placeholder="Url:"> <br />
