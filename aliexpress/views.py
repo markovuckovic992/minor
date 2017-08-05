@@ -1,19 +1,27 @@
 from django.shortcuts import render, HttpResponse
 
+from administration.models import Users
+
 from alicrawler import AliCrawler
 from fetch import main
 
+from datetime import datetime, timedelta
 import random
 import requests
 import json
 
+def get_client_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+		ip = x_forwarded_for.split(',')[0]
+	else:
+		ip = request.META.get('REMOTE_ADDR')
+	return ip
 
 def home(request):
-    #resp = request.__dict__['HTTP_REFERER']
-    resp = {}
-    # for data in request.META.keys():
-    # 	resp.update({data: request.META[data]})
-    return render(request, 'aliexpress.html', {'request': resp})
+	time = datetime.now() + timedelta(minutes=1)
+	Users(ip=get_client_ip(request), datetime=time).save()
+	return render(request, 'aliexpress.html', {})
 
 def search(request):
     # POST DATA
