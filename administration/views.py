@@ -12,4 +12,3 @@ def getLiveScore(request):
 	return HttpResponse(json.dumps({
         "greeting": "Hello!",
     }))  
-	# http://rezultati.soccerbet.rs/live_score_danas/

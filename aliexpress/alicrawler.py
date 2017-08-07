@@ -10,7 +10,7 @@ class AliCrawler:
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
         }
-        # ip_ = 'socks5://201.53.19.30:42361'
+        
         self.proxies = {
             'http': ip_,
             'https': ip_
