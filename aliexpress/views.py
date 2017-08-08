@@ -106,8 +106,8 @@ dict_ = {
 def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
     response = {}
 
-    original_price = resp['original_price']
-    tmp = price / original_price * 100
+    original_price = float(resp['original_price'])
+    tmp = float(price) / original_price * 100
     if tmp < 200:
         response.update({
             'p_m': dict_['Price Markup'][2]
