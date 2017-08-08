@@ -11,12 +11,12 @@ import requests
 import json
 
 def get_client_ip(request):
-	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-	if x_forwarded_for:
-		ip = x_forwarded_for.split(',')[0]
-	else:
-		ip = request.META.get('REMOTE_ADDR')
-	return ip
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 def home(request):
     time = datetime.now() + timedelta(minutes=1)
@@ -107,21 +107,18 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
     response = {}
 
     original_price = resp['original_price']
-    if price < original_price: 
-        tmp = 0
-    else:
-        tmp = (float(price) - float(original_price)) / float(original_price) * 100
-    if tmp < 200:       
+    tmp = price / original_price * 100
+    if tmp < 200:
         response.update({
-            'p_m': dict_['Price Markup'][0]
+            'p_m': dict_['Price Markup'][2]
         })
-    elif tmp < 300:      
+    elif tmp < 300:
         response.update({
             'p_m': dict_['Price Markup'][1]
         })
-    else:      
+    else:
         response.update({
-            'p_m': dict_['Price Markup'][2]
+            'p_m': dict_['Price Markup'][0]
         })
 
     p_r = resp['rating']
@@ -157,13 +154,13 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
         response.update({
             'f_s': dict_['Fulfillment Safety'][1]
         })
-    else:        
+    else:
         response.update({
             'f_s': dict_['Fulfillment Safety'][2]
         })
 
-    
-    
+
+
     sum = 0
     if resp['shipping_e']:
         sum += 1
@@ -178,7 +175,7 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
         response.update({
             'Shipping': dict_['Shipping'][1]
         })
-    else:        
+    else:
         response.update({
             'Shipping': dict_['Shipping'][2]
         })
@@ -199,7 +196,7 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
         response.update({
             'CLV': dict_['Shipping'][1]
         })
-    else:        
+    else:
         response.update({
             'CLV': dict_['CLV'][2]
         })
@@ -221,7 +218,7 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
         response.update({
             'Trends': dict_['Trends'][1]
         })
-    else:        
+    else:
         response.update({
             'Trends': dict_['Trends'][2]
         })
