@@ -224,3 +224,11 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
         })
 
     return response
+
+
+def index_2(request):
+    return render(request, 'index_2.html', {})
+
+
+def index_1(request):
+    return render(request, 'index_1.html', {})

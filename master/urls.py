@@ -20,11 +20,10 @@ import aliexpress.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^live_score_danas/', administration.views.getLiveScore),
-    url(r'^$', administration.views.home),
-    # Posts
-
     # AliExpress
     url(r'^search_aliexpress/', aliexpress.views.search),
-    url(r'^home_aliexpress/', aliexpress.views.home),    
+    url(r'^home_aliexpress/', aliexpress.views.home),  
+    # indexes
+    url(r'^index_1/', aliexpress.views.index_1),
+    url(r'^index_2/', aliexpress.views.index_2),      
 ]
