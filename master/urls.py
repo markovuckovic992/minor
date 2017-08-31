@@ -22,8 +22,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # AliExpress
     url(r'^search_aliexpress/', aliexpress.views.search),
-    url(r'^home_aliexpress/', aliexpress.views.home),  
+    url(r'^home_aliexpress/', aliexpress.views.home),
     # indexes
     url(r'^index_1/', aliexpress.views.index_1),
-    url(r'^index_2/', aliexpress.views.index_2),      
+    url(r'^index_2/', aliexpress.views.index_2),
 ]
