@@ -212,7 +212,19 @@ form ul li {
     input {
         font-size: 12px
     }
+    input[type=submit] {
+        min-height: 35px;
+        height: 35px;
+        margin: 5px !important;
+        padding: 5px !important;
+    }
 }
+
+input[type=checkbox] {
+    position: absolute;
+    right: 2px;
+}
+
 
 
 #loading-div-background{
