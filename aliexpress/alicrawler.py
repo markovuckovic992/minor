@@ -10,7 +10,7 @@ class AliCrawler:
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
         }
-        
+
         self.proxies = {
             'http': ip_,
             'https': ip_
@@ -125,6 +125,11 @@ class AliCrawler:
             data = data / i
             data = float("{0:.2f}".format(data))
         except:
+
+            file = open('response.txt', 'w')
+            file.write(unicode(resp))
+            file.close()
+
             data = None
 
         return data

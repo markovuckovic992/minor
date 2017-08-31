@@ -64,11 +64,6 @@ def search(request):
                 #     pass
             ali = AliCrawler(ip_)
             resp = ali.getItemById(id, store_stats=True, count=1)
-
-            file = open('response.txt', 'w')
-            file.write(unicode(resp))
-            file.close()
-
             just_do_it = False
         except:
             i += 1
