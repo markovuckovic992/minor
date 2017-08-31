@@ -7,6 +7,14 @@
     <link rel="icon" href="/static/images/favicon.png" type="image/png" sizes="32x32">
     <link rel="stylesheet" type="text/css" href="/static/css/main2.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <style type="text/css">
+    	input[type='checkbox'] {
+    		height: 20px;
+    		width:  20px;
+    		padding: 0;
+    		margin: 0 !important;
+    	}
+    </style>
   </head>
   <body>
 		<header>
@@ -25,19 +33,21 @@
 		<section class="hero"></section>
 		<main class="mid">
 		<section>
-			<form action="">
-				<input type="text" placeholder="Enter The AliExpress.com Product URL">
-				<input type="text" placeholder="Enter The Price You Want To Sell This Product For">
-				<ul>
-					<li>Does the product lend itself to return customers?</li>
-					<li>Does it lend itself to related products?</li>
-					<li>Does it lend itself to bundling?</li>
-					<li>Is it a novelty? Difficult to buy locally?</li>
-					<li>Can you sell it as a seasonal product?</li>
-					<li>Are the trends rising or idling for this niche on <a href="https://trends.google.com/trends/" target="_blank">Google Trends?</a></li>
-				</ul>
-				<input type="submit" value="INSTANT CHECK">
+
+			<form action="/search_aliexpress/" method="POST">
+				{% csrf_token %}
+				<input type="text" name="url" placeholder="Enter The AliExpress.com Product URL"> <br />
+				<input type="text" name="price" placeholder="Enter The Price You Want To Sell This Product For"> <br />
+				Lends itself to return customers? <input type="checkbox" name="r"> <br />
+				Lends itself to related products? <input type="checkbox" name="r_p"> <br />
+				Lends itself to bundling? <input type="checkbox" name="b"> <br />
+				Difficult to buy locally? Novelty? <input type="checkbox" name="d_t_b"> <br />
+				Seasonal business? <input type="checkbox" name="s_b"> <br />
+				Google Trends Rising or Idling? <input type="checkbox" name="g"> <br />
+				Small in size? <input type="checkbox" name="s"> <br />
+				<input type="submit" value="Submit" onclick="ShowProgressAnimation();"> <br />
 			</form>
+
 		</section>
 		</main>
 		<footer>
@@ -46,8 +56,28 @@
 				<p>©2017 All Right Reserved</p>
 			</div>
 		</footer>
+		<div id="loading-div-background">
+          <div id="loading-div" class="ui-corner-all">
+            <img src="/static/images/please_wait.gif" alt="Loading.."/>
+          </div>
+        </div>
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/app.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#loading-div-background").css({ opacity: 1.0 });
+
+            var err = "{{ error }}";
+            if (err) {
+                alert(err);
+            }
+            $('#form_submit').click()
+        });
+
+        function ShowProgressAnimation() {
+            $("#loading-div-background").show();
+        }
+    </script>
   </body>
 </html>
 
