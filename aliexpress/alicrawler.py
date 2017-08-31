@@ -115,6 +115,11 @@ class AliCrawler:
 
         try:
             req = requests.get(url, headers=self.headers, proxies=self.proxies)
+
+            file = open('response.txt', 'w')
+            file.write(unicode(req.text) + '\n' + url)
+            file.close()
+
             useful_data = req.text[8:-4].strip()
             tmp = json.loads(useful_data)
             data = 0
@@ -126,9 +131,7 @@ class AliCrawler:
             data = float("{0:.2f}".format(data))
         except:
 
-            file = open('response.txt', 'w')
-            file.write(unicode(traceback.format_exc()))
-            file.close()
+
 
             data = None
 
