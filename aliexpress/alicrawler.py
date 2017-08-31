@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import json
+import traceback
 
 class AliCrawler:
     def __init__(self, ip_):
@@ -31,7 +32,6 @@ class AliCrawler:
                 price = price.replace(',', '')
             data['original_price'] = float(price.strip())
         except:
-            import traceback
             print traceback.format_exc()
 
             price = bs4.select('span[itemprop=price]')[0].string.split(' ')[0]
@@ -127,7 +127,7 @@ class AliCrawler:
         except:
 
             file = open('response.txt', 'w')
-            file.write(unicode(resp))
+            file.write(unicode(traceback.format_exc()))
             file.close()
 
             data = None
