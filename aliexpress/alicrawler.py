@@ -130,10 +130,7 @@ class AliCrawler:
             data = data / i
             data = float("{0:.2f}".format(data))
         except:
-
-
-
-            data = None
+            data = float("{0:.2f}".format(0))
 
         return data
 
