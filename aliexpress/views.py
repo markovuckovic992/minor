@@ -75,33 +75,62 @@ def search(request):
         resp = make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g)
         return render(request, 'aliexpress_response.html', {'response': resp})
 
+# dict_ = {
+#     'Price Markup': [
+#         'GREAT! The markup is high enough.',
+#         'HMM... The markup might not be high enough. Think twice before you go for it.',
+#         'NOT RECOMMENDED! With this markup, we believe it\'s going to be hard to turn a profit. You might want to stay away from this product.'
+#     ],
+#     'Fulfillment Safety': [
+#         'GREAT! It\'s all looking good. Fulfillment shouldn\'t be a problem.',
+#         'MEH... Fulfillment might be a problem. We recommend you manually review the feedback and status of the store and then decide.',
+#         'NOT RECOMMENDED! It doesn\'t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.'
+#     ],
+#     'Shipping': [
+#         'GREAT! Free shipping!',
+#         'THIS WORKS... You\'re good with shipping!',
+#         'NOT RECOMMENDED! It doesn\'t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what\'s happening.'
+#     ],
+#     'CLV': [
+#         'GREAT! It seems like if someone buys this product, they\'re likely to buy other similar products. That\'s good as it allows you to have a higher Customer Lifetime Value.',
+#         'MEH... If it\'s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.',
+#         'NOT RECOMMENDED! If you can\'t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it\'s easy to give other similar products to your niche. So you shouldn\'t go with products that don\'t lend themselves to upsells, bundling, etc...',
+#     ],
+#     'Trends': [
+#         'GREAT! It\'s trending, it\'s especially popular during a major sales season, so it\'s all looking good!',
+#         'NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it\'s popular, go for it!',
+#         'NOT RECOMMENDED! Doesn\'t look like it\'s very popular... Maybe you should stay away.',
+#     ]
+# }
+
 dict_ = {
     'Price Markup': [
-        'GREAT! The markup is high enough.',
-        'HMM... The markup might not be high enough. Think twice before you go for it.',
-        'NOT RECOMMENDED! With this markup, we believe it\'s going to be hard to turn a profit. You might want to stay away from this product.'
+        0,
+        1,
+        2
     ],
     'Fulfillment Safety': [
-        'GREAT! It\'s all looking good. Fulfillment shouldn\'t be a problem.',
-        'MEH... Fulfillment might be a problem. We recommend you manually review the feedback and status of the store and then decide.',
-        'NOT RECOMMENDED! It doesn\'t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.'
+        0,
+        1,
+        2
     ],
     'Shipping': [
-        'GREAT! Free shipping!',
-        'THIS WORKS... You\'re good with shipping!',
-        'NOT RECOMMENDED! It doesn\'t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what\'s happening.'
+        0,
+        1,
+        2
     ],
     'CLV': [
-        'GREAT! It seems like if someone buys this product, they\'re likely to buy other similar products. That\'s good as it allows you to have a higher Customer Lifetime Value.',
-        'MEH... If it\'s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.',
-        'NOT RECOMMENDED! If you can\'t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it\'s easy to give other similar products to your niche. So you shouldn\'t go with products that don\'t lend themselves to upsells, bundling, etc...',
+        0,
+        1,
+        2
     ],
     'Trends': [
-        'GREAT! It\'s trending, it\'s especially popular during a major sales season, so it\'s all looking good!',
-        'NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it\'s popular, go for it!',
-        'NOT RECOMMENDED! Doesn\'t look like it\'s very popular... Maybe you should stay away.',
+        0,
+        1,
+        2
     ]
 }
+
 
 def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
     response = {}

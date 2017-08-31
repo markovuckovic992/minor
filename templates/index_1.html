@@ -26,120 +26,148 @@
 			<section class="resec">
 				<h2>THE RESULTS ARE IN...</h2>
 
-				<div class="res">
-					<img src="/static/img/res-ico-correct.png" alt="">
-					<div>
-						<h4>Price Markup:</h4>
-						<p>GREAT! The markup is high enough.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-maybe.png" alt="">
-					<div>
-						<h4>Price Markup:</h4>
-						<p>HMM? The markup might not be high enough. Think twice before you go for it.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-stop.png" alt="">
-					<div>
-						<h4>Price Markup:</h4>
-						<p>NOT RECOMMENDED! With this markup, we believe it’s going to be hard to turn a profit. You might want to stay away from this product.</p>
-					</div>
-				</div>
+                {% if response.p_m == 0 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-correct.png" alt="">
+    					<div>
+    						<h4>Price Markup:</h4>
+    						<p>GREAT! The markup is high enough.</p>
+    					</div>
+    				</div>
+                {% elif response.p_m == 1 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-maybe.png" alt="">
+    					<div>
+    						<h4>Price Markup:</h4>
+    						<p>HMM? The markup might not be high enough. Think twice before you go for it.</p>
+    					</div>
+    				</div>
+                {% else %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-stop.png" alt="">
+    					<div>
+    						<h4>Price Markup:</h4>
+    						<p>NOT RECOMMENDED! With this markup, we believe it’s going to be hard to turn a profit. You might want to stay away from this product.</p>
+    					</div>
+    				</div>
+                {% endif %}
+
 				<hr>
 
-				<div class="res">
-					<img src="/static/img/res-ico-correct.png" alt="">
-					<div>
-						<h4>Fulfillment Safety:</h4>
-						<p>GREAT! It’s all looking good. Fulfillment shouldn’t be a problem.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-maybe.png" alt="">
-					<div>
-						<h4>Fulfillment Safety:</h4>
-						<p>MEH? Fulfillment might be a problem. We recommend you manually review the feedback and status of the store and then decide.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-stop.png" alt="">
-					<div>
-						<h4>Fulfillment Safety:</h4>
-						<p>NOT RECOMMENDED! It doesn’t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.</p>
-					</div>
-				</div>
+                {% if response.f_s == 0 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-correct.png" alt="">
+    					<div>
+    						<h4>Fulfillment Safety:</h4>
+    						<p>GREAT! It’s all looking good. Fulfillment shouldn’t be a problem.</p>
+    					</div>
+    				</div>
+                {% elif response.f_s == 1 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-maybe.png" alt="">
+    					<div>
+    						<h4>Fulfillment Safety:</h4>
+    						<p>MEH? Fulfillment might be a problem. We recommend you manually review the feedback and status of the store and then decide.</p>
+    					</div>
+    				</div>
+                {% else %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-stop.png" alt="">
+    					<div>
+    						<h4>Fulfillment Safety:</h4>
+    						<p>NOT RECOMMENDED! It doesn’t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.</p>
+    					</div>
+    				</div>
+                {% endif %}
+
 				<hr>
-				
-				<div class="res">
-					<img src="/static/img/res-ico-correct.png" alt="">
-					<div>
-						<h4>Shipping:</h4>
-						<p>GREAT! You’re good with shipping!</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-maybe.png" alt="">
-					<div>
-						<h4>Shipping:</h4>
-						<p>THIS WORKS? You’re good with shipping!</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-stop.png" alt="">
-					<div>
-						<h4>Shipping:</h4>
-						<p>NOT RECOMMENDED! It doesn’t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what’s happening.</p>
-					</div>
-				</div>
+
+                {% if response.Shipping == 0 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-correct.png" alt="">
+    					<div>
+    						<h4>Shipping:</h4>
+    						<p>GREAT! You’re good with shipping!</p>
+    					</div>
+    				</div>
+                {% elif response.Shipping == 1 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-maybe.png" alt="">
+    					<div>
+    						<h4>Shipping:</h4>
+    						<p>THIS WORKS? You’re good with shipping!</p>
+    					</div>
+    				</div>
+                {% else %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-stop.png" alt="">
+    					<div>
+    						<h4>Shipping:</h4>
+    						<p>NOT RECOMMENDED! It doesn’t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what’s happening.</p>
+    					</div>
+    				</div>
+                {% endif %}
+
 				<hr>
-				
-				<div class="res">
-					<img src="/static/img/res-ico-correct.png" alt="">
-					<div>
-						<h4>CVL:</h4>
-						<p>GREAT! It seems like if someone buys this product, they’re likely to buy other similar products. That’s good as it allows you to have a higher Customer Lifetime Value.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-maybe.png" alt="">
-					<div>
-						<h4>CVL:</h4>
-						<p>MEH? If it’s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-stop.png" alt="">
-					<div>
-						<h4>CVL:</h4>
-						<p>NOT RECOMMENDED! If you can’t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it’s easy to give other similar products to your niche. So you shouldn’t go with products that don’t lend themselves to upsells, bundling, etc...</p>
-					</div>
-				</div>
+
+                {% if response.CLV == 0 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-correct.png" alt="">
+    					<div>
+    						<h4>CVL:</h4>
+    						<p>GREAT! It seems like if someone buys this product, they’re likely to buy other similar products. That’s good as it allows you to have a higher Customer Lifetime Value.</p>
+    					</div>
+    				</div>
+                {% elif response.CLV == 1 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-maybe.png" alt="">
+    					<div>
+    						<h4>CVL:</h4>
+    						<p>MEH? If it’s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.</p>
+    					</div>
+    				</div>
+                {% else %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-stop.png" alt="">
+    					<div>
+    						<h4>CVL:</h4>
+    						<p>NOT RECOMMENDED! If you can’t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it’s easy to give other similar products to your niche. So you shouldn’t go with products that don’t lend themselves to upsells, bundling, etc...</p>
+    					</div>
+    				</div>
+                {% endif %}
 				<hr>
-				
-				<div class="res">
-					<img src="/static/img/res-ico-correct.png" alt="">
-					<div>
-						<h4>Trends:</h4>
-						<p>GREAT! It?s trending, it’s especially popular during a major sales season, so it’s all looking good!</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-maybe.png" alt="">
-					<div>
-						<h4>Trends:</h4>
-						<p>NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it’s popular, go for it!</p>
-					</div>
-				</div>
-				<div class="res">
-					<img src="/static/img/res-ico-stop.png" alt="">
-					<div>
-						<h4>Trends:</h4>
-						<p>NOT RECOMMENDED! Doesn’t look like it’s very popular? Maybe you should stay away.</p>
-					</div>
-				</div>
+
+                {% if response.Trends == 0 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-correct.png" alt="">
+    					<div>
+    						<h4>Trends:</h4>
+    						<p>GREAT! It?s trending, it’s especially popular during a major sales season, so it’s all looking good!</p>
+    					</div>
+    				</div>
+                {% elif response.Trends == 1 %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-maybe.png" alt="">
+    					<div>
+    						<h4>Trends:</h4>
+    						<p>NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it’s popular, go for it!</p>
+    					</div>
+    				</div>
+                {% else %}
+    				<div class="res">
+    					<img src="/static/img/res-ico-stop.png" alt="">
+    					<div>
+    						<h4>Trends:</h4>
+    						<p>NOT RECOMMENDED! Doesn’t look like it’s very popular? Maybe you should stay away.</p>
+    					</div>
+    				</div>
+                {% endif %}
+
 				<hr>
+
+                <div>
+                    <a href="/home_aliexpress/">Search again</a>
+                </div>
 			</section>
 			<section class="final">
 				<h2>FINAL VERDICT</h2>

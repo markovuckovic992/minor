@@ -38,14 +38,23 @@
 				{% csrf_token %}
 				<input type="text" name="url" placeholder="Enter The AliExpress.com Product URL"> <br />
 				<input type="text" name="price" placeholder="Enter The Price You Want To Sell This Product For"> <br />
-				Lends itself to return customers? <input type="checkbox" name="r"> <br />
+				<!-- Lends itself to return customers? <input type="checkbox" name="r"> <br />
 				Lends itself to related products? <input type="checkbox" name="r_p"> <br />
 				Lends itself to bundling? <input type="checkbox" name="b"> <br />
 				Difficult to buy locally? Novelty? <input type="checkbox" name="d_t_b"> <br />
 				Seasonal business? <input type="checkbox" name="s_b"> <br />
 				Google Trends Rising or Idling? <input type="checkbox" name="g"> <br />
 				Small in size? <input type="checkbox" name="s"> <br />
-				<input type="submit" value="Submit" onclick="ShowProgressAnimation();"> <br />
+				-->
+                <ul>
+                    <li>Does the product lend itself to return customers?  <input type="checkbox" name="r"></li>
+                    <li>Does it lend itself to related products? <input type="checkbox" name="r_p"></li>
+                    <li>Does it lend itself to bundling? <input type="checkbox" name="b"></li>
+                    <li>Is it a novelty? Difficult to buy locally? <input type="checkbox" name="d_t_b"></li>
+                    <li>Can you sell it as a seasonal product? <input type="checkbox" name="s_b"></li>
+                    <li>Are the trends rising or idling for this niche on <a href="https://trends.google.com/trends/" target="_blank">Google Trends? </a> <input type="checkbox" name="g"> </li>
+                </ul>
+                <input type="submit" value="Submit" onclick="ShowProgressAnimation();">
 			</form>
 
 		</section>
@@ -65,7 +74,7 @@
     <script src="/static/js/app.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#loading-div-background").css({ opacity: 1.0 });
+            $("#loading-div-background").hide();
 
             var err = "{{ error }}";
             if (err) {
