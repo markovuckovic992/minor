@@ -133,15 +133,19 @@ dict_ = {
 
 
 def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
+    answers = 3
+    counter = 0
     response = {}
 
     original_price = float(resp['original_price'])
     tmp = float(price) / original_price * 100
     if tmp < 200:
+        answers = 2
         response.update({
             'p_m': dict_['Price Markup'][2]
         })
     elif tmp < 300:
+        counter += 1
         response.update({
             'p_m': dict_['Price Markup'][1]
         })
@@ -180,10 +184,12 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
             'f_s': dict_['Fulfillment Safety'][0]
         })
     elif sum >= 2:
+        counter += 1
         response.update({
             'f_s': dict_['Fulfillment Safety'][1]
         })
     else:
+        answers = 2
         response.update({
             'f_s': dict_['Fulfillment Safety'][2]
         })
@@ -201,10 +207,12 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
             'Shipping': dict_['Shipping'][0]
         })
     elif sum >= 1:
+        counter += 1
         response.update({
             'Shipping': dict_['Shipping'][1]
         })
     else:
+        answers = 2
         response.update({
             'Shipping': dict_['Shipping'][2]
         })
@@ -222,10 +230,12 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
             'CLV': dict_['CLV'][0]
         })
     elif sum >= 2:
+        counter += 1
         response.update({
             'CLV': dict_['Shipping'][1]
         })
     else:
+        answers = 2
         response.update({
             'CLV': dict_['CLV'][2]
         })
@@ -244,15 +254,24 @@ def make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g):
             'Trends': dict_['Trends'][0]
         })
     elif sum >= 2:
+        counter += 1
         response.update({
             'Trends': dict_['Trends'][1]
         })
     else:
+        answers = 2
         response.update({
             'Trends': dict_['Trends'][2]
         })
 
-    return response
+
+    if answers == 3:
+        if counter <= 2:
+            answer = 1
+        else:
+            answer = 0
+
+    return response, answers
 
 
 def index_2(request):

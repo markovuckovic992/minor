@@ -173,10 +173,14 @@
 				<h2>FINAL VERDICT</h2>
 				<div class="mid">
 					<div class="final-txt">
-						<p>Looks like you got a potential winner on your hands! Definitely recommended for testing!</p>
-						<p>Too many things going wrong. I would stay away from this product.</p>
-						<p>It’s got some pros and cons. It might not be perfect, but it might work! You should put it on your list for testing, but not as a top priority product.</p>
-					</div>
+                        {% if answers == 3 %}
+						  <p>Looks like you got a potential winner on your hands! Definitely recommended for testing!</p>
+                        {% elif answers == 2 %}
+                            <p>Too many things going wrong. I would stay away from this product.</p>
+                        {% elif answers == 1 %}
+                            <p>It’s got some pros and cons. It might not be perfect, but it might work! You should put it on your list for testing, but not as a top priority product.</p>
+					   {% endif %}
+                    </div>
 					<div class="final-img">
 						<img src="/static/img/res-ico-good.png" alt="">
 						<img src="/static/img/res-ico-mid.png" alt="">
