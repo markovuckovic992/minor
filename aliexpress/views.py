@@ -72,8 +72,8 @@ def search(request):
     if i == 7:
         return render(request, 'aliexpress.html', {'error': 'System failed to find data for this product. Try again after a while.'})
     else:
-        resp = make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g)
-        return render(request, 'aliexpress_response.html', {'response': resp})
+        resp, answers = make_real_response(resp, price, r, r_p, b, d_t_b, s_b, g)
+        return render(request, 'aliexpress_response.html', {'response': resp, 'answers': answers})
 
 # dict_ = {
 #     'Price Markup': [
