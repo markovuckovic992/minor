@@ -179,9 +179,13 @@
 					   {% endif %}
                     </div>
 					<div class="final-img">
-						<img src="/static/img/res-ico-good.png" alt="">
-						<img src="/static/img/res-ico-mid.png" alt="">
-						<img src="/static/img/res-ico-bad.png" alt="">
+                        {% if answers == 3 %}
+                            <img src="/static/img/res-ico-good.png" alt="">
+                        {% elif answers == 2 %}
+                            <img src="/static/img/res-ico-mid.png" alt="">
+                        {% elif answers == 1 %}
+                            <img src="/static/img/res-ico-bad.png" alt="">
+                       {% endif %}
 					</div>
 				</div>
 			</section>
