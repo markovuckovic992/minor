@@ -28,7 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '138.201.226.93'
+    '138.201.226.93',
+    'profitability.digitalcashacademy.com', 
 ]
 
 
