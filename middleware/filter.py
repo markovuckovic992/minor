@@ -25,6 +25,6 @@ class AllowIpMiddleware(object):
 				elif 'https://www.ecomroad.com' in REFERER:					
 					response = self.get_response(request)
 					return response
-				return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+				return http.HttpResponseForbidden(REFERER)
 		except:
-			return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+			return http.HttpResponseForbidden(REFERER)
