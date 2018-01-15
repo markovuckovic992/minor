@@ -133,6 +133,7 @@ LOGIN_URL = '/home_login/'
 STATIC_URL = '/static/'
 
 ALLOWED_IPS = [
-    '54.194.70.47'
+    '54.194.70.47',
+    '104.16.14.194'
 ]
 
