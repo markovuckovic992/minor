@@ -47,7 +47,7 @@
     					<img src="/static/img/res-ico-stop.png" alt="">
     					<div>
     						<h4>Price Markup:</h4>
-    						<p>NOT RECOMMENDED! With this markup, we believe it’s going to be hard to turn a profit. You might want to stay away from this product.</p>
+    						<p>NOT RECOMMENDED! With this markup, we believe it&rsquo;s going to be hard to turn a profit. You might want to stay away from this product.</p>
     					</div>
     				</div>
                 {% endif %}
@@ -59,7 +59,7 @@
     					<img src="/static/img/res-ico-correct.png" alt="">
     					<div>
     						<h4>Fulfillment Safety:</h4>
-    						<p>GREAT! It’s all looking good. Fulfillment shouldn’t be a problem.</p>
+    						<p>GREAT! It&rsquo;s all looking good. Fulfillment shouldn&rsquo;t be a problem.</p>
     					</div>
     				</div>
                 {% elif response.f_s == 1 %}
@@ -75,7 +75,7 @@
     					<img src="/static/img/res-ico-stop.png" alt="">
     					<div>
     						<h4>Fulfillment Safety:</h4>
-    						<p>NOT RECOMMENDED! It doesn’t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.</p>
+    						<p>NOT RECOMMENDED! It doesn&rsquo;t look great. You might potentially have fulfillment headaches. Maybe you should stay away from this product.</p>
     					</div>
     				</div>
                 {% endif %}
@@ -87,7 +87,7 @@
     					<img src="/static/img/res-ico-correct.png" alt="">
     					<div>
     						<h4>Shipping:</h4>
-    						<p>GREAT! You’re good with shipping!</p>
+    						<p>GREAT! You&rsquo;re good with shipping!</p>
     					</div>
     				</div>
                 {% elif response.Shipping == 1 %}
@@ -95,7 +95,7 @@
     					<img src="/static/img/res-ico-maybe.png" alt="">
     					<div>
     						<h4>Shipping:</h4>
-    						<p>THIS WORKS? You’re good with shipping!</p>
+    						<p>THIS WORKS? You&rsquo;re good with shipping!</p>
     					</div>
     				</div>
                 {% else %}
@@ -103,7 +103,7 @@
     					<img src="/static/img/res-ico-stop.png" alt="">
     					<div>
     						<h4>Shipping:</h4>
-    						<p>NOT RECOMMENDED! It doesn’t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what’s happening.</p>
+    						<p>NOT RECOMMENDED! It doesn&rsquo;t look like they offer either free shipping or ePacket. From our experience, other shipping methods might be troublesome and expensive, but you can check manually to see what&rsquo;s happening.</p>
     					</div>
     				</div>
                 {% endif %}
@@ -115,7 +115,7 @@
     					<img src="/static/img/res-ico-correct.png" alt="">
     					<div>
     						<h4>CVL:</h4>
-    						<p>GREAT! It seems like if someone buys this product, they’re likely to buy other similar products. That’s good as it allows you to have a higher Customer Lifetime Value.</p>
+    						<p>GREAT! It seems like if someone buys this product, they&rsquo;re likely to buy other similar products. That&rsquo;s good as it allows you to have a higher Customer Lifetime Value.</p>
     					</div>
     				</div>
                 {% elif response.CLV == 1 %}
@@ -123,7 +123,7 @@
     					<img src="/static/img/res-ico-maybe.png" alt="">
     					<div>
     						<h4>CVL:</h4>
-    						<p>MEH? If it’s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.</p>
+    						<p>MEH? If it&rsquo;s hard to find other similar products that your audience would buy, then you might want to think twice. You want to be able to upsell, downsell and bundle to your audience.</p>
     					</div>
     				</div>
                 {% else %}
@@ -131,7 +131,7 @@
     					<img src="/static/img/res-ico-stop.png" alt="">
     					<div>
     						<h4>CVL:</h4>
-    						<p>NOT RECOMMENDED! If you can’t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it’s easy to give other similar products to your niche. So you shouldn’t go with products that don’t lend themselves to upsells, bundling, etc...</p>
+    						<p>NOT RECOMMENDED! If you can&rsquo;t see this product being used as an upsell or in a bundle, then you might want to stay away. Typically, it&rsquo;s easy to give other similar products to your niche. So you shouldn&rsquo;t go with products that don&rsquo;t lend themselves to upsells, bundling, etc...</p>
     					</div>
     				</div>
                 {% endif %}
@@ -142,7 +142,7 @@
     					<img src="/static/img/res-ico-correct.png" alt="">
     					<div>
     						<h4>Trends:</h4>
-    						<p>GREAT! It?s trending, it’s especially popular during a major sales season, so it’s all looking good!</p>
+    						<p>GREAT! It?s trending, it&rsquo;s especially popular during a major sales season, so it&rsquo;s all looking good!</p>
     					</div>
     				</div>
                 {% elif response.Trends == 1 %}
@@ -150,7 +150,7 @@
     					<img src="/static/img/res-ico-maybe.png" alt="">
     					<div>
     						<h4>Trends:</h4>
-    						<p>NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it’s popular, go for it!</p>
+    						<p>NOT BAD! Not perfect, but also not bad. Think about it one more time and you feel that it&rsquo;s popular, go for it!</p>
     					</div>
     				</div>
                 {% else %}
@@ -158,7 +158,7 @@
     					<img src="/static/img/res-ico-stop.png" alt="">
     					<div>
     						<h4>Trends:</h4>
-    						<p>NOT RECOMMENDED! Doesn’t look like it’s very popular? Maybe you should stay away.</p>
+    						<p>NOT RECOMMENDED! Doesn&rsquo;t look like it&rsquo;s very popular? Maybe you should stay away.</p>
     					</div>
     				</div>
                 {% endif %}
@@ -175,13 +175,17 @@
                         {% elif answers == 2 %}
                             <p>Too many things going wrong. I would stay away from this product.</p>
                         {% elif answers == 1 %}
-                            <p>It’s got some pros and cons. It might not be perfect, but it might work! You should put it on your list for testing, but not as a top priority product.</p>
+                            <p>It&rsquo;s got some pros and cons. It might not be perfect, but it might work! You should put it on your list for testing, but not as a top priority product.</p>
 					   {% endif %}
                     </div>
 					<div class="final-img">
-						<img src="/static/img/res-ico-good.png" alt="">
-						<img src="/static/img/res-ico-mid.png" alt="">
-						<img src="/static/img/res-ico-bad.png" alt="">
+                        {% if answers == 3 %}
+                            <img src="/static/img/res-ico-good.png" alt="">
+                        {% elif answers == 2 %}
+                            <img src="/static/img/res-ico-bad.png" alt="">
+                        {% elif answers == 1 %}
+                            <img src="/static/img/res-ico-mid.png" alt="">     
+                        {% endif %}
 					</div>
 				</div>
 			</section>

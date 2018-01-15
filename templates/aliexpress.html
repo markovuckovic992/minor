@@ -30,8 +30,8 @@
 
 			<form action="/search_aliexpress/" method="POST">
 				{% csrf_token %}
-				<input type="text" name="url" placeholder="Enter The AliExpress.com Product URL"> <br />
-				<input type="text" name="price" placeholder="Enter The Price You Want To Sell This Product For"> <br />
+				<input type="text" name="url" required placeholder="Enter The AliExpress.com Product URL"> <br />
+				<input type="text" name="price" required placeholder="Enter The Price You Want To Sell This Product For"> <br />
                 <ul style="position: relative;">
                     <li>Does the product lend itself to return customers?  <input type="checkbox" name="r"></li>
                     <li>Does it lend itself to related products? <input type="checkbox" name="r_p"></li>
@@ -40,7 +40,7 @@
                     <li>Can you sell it as a seasonal product? <input type="checkbox" name="s_b"></li>
                     <li>Are the trends rising or idling for this niche on <a href="https://trends.google.com/trends/" target="_blank">Google Trends? </a> <input type="checkbox" name="g"> </li>
                 </ul>
-                <input type="submit" value="Submit" onclick="ShowProgressAnimation();">
+                <input type="submit" value="Submit" onsubmit="ShowProgressAnimation();">
 			</form>
 
 		</section>

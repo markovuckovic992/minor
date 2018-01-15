@@ -286,16 +286,16 @@ h2 {
 }
 
 #loading-div{
-    width: 117px;
-    height: 117px;
+    width: 198px;
+    height: 198px;
     background-color: #fff;
     text-align: center;
     color: #202020;
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -59px;
-    margin-top: -59px;
+    margin-left: -99px;
+    margin-top: -99px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
