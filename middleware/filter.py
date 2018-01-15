@@ -16,15 +16,9 @@ class AllowIpMiddleware(object):
 				return response
 			except:
 				REFERER = request.META['HTTP_REFERER']
-				if 'http://www.digitalcashacademy.com' in REFERER:
+				if 'http://www.digitalcashacademy.com' in REFERER or 'http://138.201.226.93' in REFERER or 'https://www.ecomroad.com' in REFERER:
 					response = self.get_response(request)
 					return response
-				elif 'http://138.201.226.93' in REFERER:					
-					response = self.get_response(request)
-					return response				
-				elif 'https://www.ecomroad.com' in REFERER:					
-					response = self.get_response(request)
-					return response
-				return http.HttpResponseForbidden(REFERER)
+				return http.HttpResponseForbidden('<h1>Forbidden</h1>')
 		except:
 			return http.HttpResponseForbidden('<h1>Forbidden</h1>')
