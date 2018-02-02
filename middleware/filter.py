@@ -23,4 +23,5 @@ class AllowIpMiddleware(object):
                     return response
                 return http.HttpResponseForbidden('<h1>Forbidden 1</h1>')
         except:
-            return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+            # return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+            return http.HttpResponse(request.META['HTTP_HOST'])
