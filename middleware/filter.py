@@ -23,9 +23,4 @@ class AllowIpMiddleware(object):
                     return response
                 return http.HttpResponseForbidden('<h1>Forbidden 1</h1>')
         except:
-            resp = {}
-            for key, value in request.META.keys():
-                resp.update({
-                    key: request.META[key]
-                })
-            return http.HttpResponse(resp)
+            return http.HttpResponseForbidden('<h1>Forbidden</h1>')
