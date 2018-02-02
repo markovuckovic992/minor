@@ -23,4 +23,8 @@ class AllowIpMiddleware(object):
                     return response
                 return http.HttpResponseForbidden('<h1>Forbidden 1</h1>')
         except:
-            return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+            if 'HTTP_REFERER' in request.META:
+                return http.HttpResponseForbidden('<h1>Forbidden</h1>')
+            else:
+                response = self.get_response(request)
+                return response
