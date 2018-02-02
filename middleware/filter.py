@@ -2,6 +2,8 @@ from django.conf import settings
 from django import http
 from aliexpress.views import get_client_ip
 from administration.models import Users
+import traceback
+
 
 class AllowIpMiddleware(object):
     def __init__(self, get_response):
@@ -21,4 +23,4 @@ class AllowIpMiddleware(object):
                     return response
                 return http.HttpResponseForbidden('<h1>Forbidden 1</h1>')
         except:
-            return http.HttpResponseForbidden('<h1>Forbidden 2</h1>')
+            return http.HttpResponse(traceback.format_exc())
