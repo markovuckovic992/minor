@@ -132,7 +132,4 @@ STATICFILES_DIRS = [
 LOGIN_URL = '/home_login/'
 STATIC_URL = '/static/'
 
-ALLOWED_IPS = [
-    '54.194.70.47',
-    '.ecomroad.com'
-]
+ALLOWED_IPS = ['*']
