@@ -134,6 +134,5 @@ STATIC_URL = '/static/'
 
 ALLOWED_IPS = [
     '54.194.70.47',
-    '104.16.*.*'
+    '.ecomroad.com'
 ]
-
