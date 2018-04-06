@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '138.201.226.93',
-    'profitability.digitalcashacademy.com', 
+    'profitability.digitalcashacademy.com',
 ]
 
 
@@ -134,6 +134,5 @@ STATIC_URL = '/static/'
 
 ALLOWED_IPS = [
     '54.194.70.47',
-    '104.16.14.194'
+    '.ecomroad.com'
 ]
-
