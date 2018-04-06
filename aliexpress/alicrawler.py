@@ -7,6 +7,7 @@ import traceback
 
 class AliCrawler:
     def __init__(self, ip_):
+        # self.log = open('log.txt', 'a')
         self.alidomain = 'aliexpress.com'
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
@@ -32,7 +33,8 @@ class AliCrawler:
                 price = price.replace(',', '')
             data['original_price'] = float(price.strip())
         except:
-            print traceback.format_exc()
+            pass
+            #self.log.write(traceback.format_exc() + '\n')
 
             price = bs4.select('span[itemprop=price]')[0].string.split(' ')[0]
             if '.' not in price:
