@@ -25,8 +25,7 @@ def home(request):
         Users(ip=get_client_ip(request), datetime=time).save()
     return render(request, 'aliexpress.html', {})
 
-def search(request):
-    log = open('log.txt', 'a')
+def search(request):    
     # POST DATA
     url = request.POST['url']
     price = request.POST['price']
@@ -68,6 +67,7 @@ def search(request):
             resp = ali.getItemById(id, store_stats=True, count=1)
             just_do_it = False
         except:
+            log = open('log.txt', 'a')
             log.write(traceback.format_exc() + '\n\n---------------------------\n\n')
             log.close()
             i += 1
