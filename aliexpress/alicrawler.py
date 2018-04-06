@@ -144,12 +144,14 @@ class AliCrawler:
         bs4 = BeautifulSoup(html, "lxml")
 
         resps = bs4.select('a[class=fb-feedback-history-list]')
+        lenG = 0
         for r in resps:
             log = open('log.txt', 'a')
             log.write(r.text + '\n\n---------------------------\n\n')
             log.close()
+            lenG += 1
         log = open('log.txt', 'a')
-        log.write(len(resps) + '\n\n///////////n\n')
+        log.write(unicode(lenG) + '\n\n///////////n\n')
         log.close()
 
         resp = resps[len(resps) - 1].text        
