@@ -151,9 +151,10 @@ class AliCrawler:
             log.close()
             lenG += 1
         log = open('log.txt', 'a')
-        log.write(unicode(lenG) + '\n\n///////////n\n')
+        log.write(unicode(lenG) + '\n\n///////////\n\n')
+        log.write(url + '\n\n///////////\n\n')
         log.close()
-
+        
         resp = resps[len(resps) - 1].text        
         resp = resp.replace('.', '').replace(',', '')
         return int(resp)
