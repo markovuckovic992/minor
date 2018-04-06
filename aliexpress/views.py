@@ -69,6 +69,7 @@ def search(request):
             just_do_it = False
         except:
             log.write(traceback.format_exc() + '\n\n---------------------------\n\n')
+            log.close()
             i += 1
         if i == 7:
             just_do_it = False

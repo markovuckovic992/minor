@@ -143,6 +143,10 @@ class AliCrawler:
         html = req.text
         bs4 = BeautifulSoup(html, "lxml")
         resp = bs4.select('a[class=fb-feedback-history-list]')[4].text
+        for r in resp:
+            log = open('log.txt', 'a')
+            log.write(r.text + '\n\n---------------------------\n\n')
+            log.close()
         resp = resp.replace('.', '').replace(',', '')
         return int(resp)
 
