@@ -67,10 +67,10 @@ def search(request):
             resp = ali.getItemById(id, store_stats=True, count=1)
             just_do_it = False
         except:
-            pass
-            # log = open('log.txt', 'a')
-            # log.write(traceback.format_exc() + '\n\n---------------------------\n\n')
-            # log.close()
+            # pass
+            log = open('log.txt', 'a')
+            log.write(traceback.format_exc() + '\n\n---------------------------\n\n')
+            log.close()
             i += 1
         if i == 7:
             just_do_it = False
