@@ -7,11 +7,23 @@ import traceback
 
 class AliCrawler:
     def __init__(self, ip_):
-        # self.log = open('log.txt', 'a')
         self.alidomain = 'aliexpress.com'
         self.headers = {
             'user-agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
         }
+
+        self.proxies = {
+            'http': ip_,
+            'https': ip_
+        }
+
+    def shuffleIps(self):
+        file = open('json.json', 'r')
+        proxies = list(json.loads(file.read()))
+        file.close()
+
+        id_ = random.randint(0, len(proxies))
+        ip_ = proxies[id_]
 
         self.proxies = {
             'http': ip_,
@@ -79,8 +91,17 @@ class AliCrawler:
                 data['store_points'] = stats
             except:
                 data['store_points'] = None
-
-        data['reviews'] = self.getSellerPositiveReviews(admin_id)
+        just_do_it = True
+        i = 0
+        while just_do_it:
+            try:
+                data['reviews'] = self.getSellerPositiveReviews(admin_id)
+                just_do_it = False
+            except:
+                self.shuffleIps()
+                i += 1
+                if i > 7:
+                    just_do_it = False
         #
         # shipping
         #
