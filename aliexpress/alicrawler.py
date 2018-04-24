@@ -108,7 +108,7 @@ class AliCrawler:
                 i += 1
                 if i > 7:
                     just_do_it = False
-                    data['reviews'] = 0
+                    data['reviews'] = 500
         #
         # shipping
         #
