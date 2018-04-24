@@ -174,7 +174,7 @@ class AliCrawler:
             # lenG += 1
         log = open('log.txt', 'a')
         log.write(unicode(lenG) + '\n\n///////////\n\n')
-        log.write(html)
+        # log.write(html)
         log.close()
 
         resp = resps[4].text        
