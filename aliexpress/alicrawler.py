@@ -99,6 +99,11 @@ class AliCrawler:
                 just_do_it = False
             except:
                 self.shuffleIps()
+
+                log = open('log.txt', 'a')
+                log.write('\n\nSHUFFLE\n\n')
+                log.close()
+
                 i += 1
                 if i > 7:
                     just_do_it = False
